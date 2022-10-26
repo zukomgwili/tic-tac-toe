@@ -34,6 +34,9 @@ class Presenter
         display_board(board)
     end
 
+    def game_options(options)
+    end
+
     private
 
     def build_row(board, *args)

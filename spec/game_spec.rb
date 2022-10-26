@@ -11,6 +11,7 @@ describe Game do
         allow(presenter).to receive(:display_board)
         allow(presenter).to receive(:update_board)
         allow(presenter).to receive(:alert)
+        allow(presenter).to receive(:game_options)
         board = Board.new
         game = Game.new(presenter,board)    
     end
@@ -30,6 +31,14 @@ describe Game do
             game.start()
 
             expect(presenter).to have_received(:display_board).with(board.board).once
+        end
+
+        example "issues game options" do
+            allow(presenter).to receive(:prompt).and_return(1,4,2,5,3)
+            
+            game.start()
+
+            expect(presenter).to have_received(:game_options).with(["Human vs Human", "Human vs Computer", "Computer vs Computer"]).once
         end
 
         example "a game that results in a tie" do

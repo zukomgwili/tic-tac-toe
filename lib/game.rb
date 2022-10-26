@@ -12,6 +12,7 @@ class Game
     def start
         @presenter.display_rules(["Players take turns", "Mark empty squares", "Row(up/down,across,diagonally) with 3 same marks wins the game","Game is tied when all squares are filled but no winning row"])
         @presenter.display_board(@board.board)
+        @presenter.game_options(["Human vs Human", "Human vs Computer", "Computer vs Computer"])
         next_player = @player_1
         number_of_moves = 1
         we_have_a_winner = false
