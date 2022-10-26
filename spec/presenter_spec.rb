@@ -66,4 +66,14 @@ describe Presenter do
             end.to output("RULES\n1. Players take turns.\n2. Mark empty squares.\n3. Row(up/down,across,diagonally) with 3 same marks wins the game.\n4. Game is tied when all squares are filled but no winning row.\n\n").to_stdout
         end
     end
+
+    describe "game_options" do
+        it "should display game options" do
+            presenter = Presenter.new
+
+            expect do
+                presenter.game_options(["Human vs Human", "Human vs Computer", "Computer vs Computer"])
+            end.to output("OPTIONS\n1. Human vs Human.\n2. Human vs Computer.\n3. Computer vs Computer.\n\nPlease select an option:\n").to_stdout
+        end
+    end
 end
