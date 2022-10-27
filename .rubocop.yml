@@ -3,3 +3,12 @@ Style/Encoding:
 
 Layout/LineLength:
   Max: 120
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+AllCops: 
+  NewCops: enable
