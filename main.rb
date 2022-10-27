@@ -1,16 +1,16 @@
 #!/usr/bin/env ruby
-require "./lib/presenter"
-require "./lib/board"
-require "./lib/player"
-require "./lib/game"
+require './lib/presenter'
+require './lib/board'
+require './lib/player'
+require './lib/game'
 
 def main
-    presenter = Presenter.new
-    board = Board.new
+  presenter = Presenter.new
+  board = Board.new
 
-    game = Game.new(presenter,board)
+  game = Game.new(presenter, board)
 
-    game.start()
+  game.start
 end
 
 main
