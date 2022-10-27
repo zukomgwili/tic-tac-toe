@@ -74,11 +74,12 @@ class Game
       winning_row?(0, 3, 6) ||
       winning_row?(1, 4, 7) ||
       winning_row?(2, 5, 8) ||
-      winning_row?(6, 4, 2)
+      winning_row?(6, 4, 2) ||
+      winning_row?(0, 4, 8)
   end
 
   def winning_row?(*args)
     row = @board.marks_at(*args)
-    row.all? { |mark| mark.strip.length == 1 } && row.uniq.length === 1
+    row.all? { |mark| mark.strip.length == 1 } && row.uniq.length == 1
   end
 end

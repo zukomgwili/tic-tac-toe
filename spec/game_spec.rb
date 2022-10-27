@@ -118,6 +118,15 @@ describe Game do
       expect(presenter).to have_received(:alert).with('Player X has won')
     end
 
+    example 'a game with a top-left-bottom-right winning row ' do
+      allow(presenter).to receive(:prompt).and_return(1, 7, 1, 4, 5, 3, 9)
+
+      game.start
+
+      expect(board.board).to eq(['O', '', 'X', 'X', 'O', '', 'X', '', 'O'])
+      expect(presenter).to have_received(:alert).with('Player O has won')
+    end
+
     describe 'when a player has selected a square' do
       example 'should update the presenter' do
         allow(presenter).to receive(:prompt).and_return(1, 7)
