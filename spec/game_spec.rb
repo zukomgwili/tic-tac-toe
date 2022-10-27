@@ -109,7 +109,7 @@ describe Game do
       expect(presenter).to have_received(:alert).with('Player O has won')
     end
 
-    example 'a game with a top-left-bottom-right winning row ' do
+    example 'a game with a bottom-left-top-right winning row ' do
       allow(presenter).to receive(:prompt).and_return(1, 7, 4, 5, 1, 3)
 
       game.start
