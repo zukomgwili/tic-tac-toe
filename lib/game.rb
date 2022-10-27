@@ -20,13 +20,15 @@ class Game
     we_have_a_winner = false
     while number_of_moves <= MAX_MOVE_COUNT
       square = pick_square(next_player)
-      @board.put(next_player.mark, square)
+      mark_placed = @board.put(next_player.mark, square)
       @presenter.update_board(@board.board)
       number_of_moves += 1
       we_have_a_winner = a_winner?
       break if we_have_a_winner
 
-      next_player = next_player == @first_player ? @second_player : @first_player
+      if mark_placed
+        next_player = next_player == @first_player ? @second_player : @first_player
+      end
     end
 
     if we_have_a_winner
