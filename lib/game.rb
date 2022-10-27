@@ -68,14 +68,11 @@ class Game
   end
 
   def a_winner?
-    winning_row?(0, 1, 2) ||
-      winning_row?(3, 4, 5) ||
-      winning_row?(6, 7, 8) ||
-      winning_row?(0, 3, 6) ||
-      winning_row?(1, 4, 7) ||
-      winning_row?(2, 5, 8) ||
-      winning_row?(6, 4, 2) ||
-      winning_row?(0, 4, 8)
+    winning_rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [6, 4, 2], [0, 4, 8]]
+    winning_rows.each do |row|
+      return true if winning_row?(*row)
+    end
+    false
   end
 
   def winning_row?(*args)
