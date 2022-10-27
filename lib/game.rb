@@ -16,13 +16,11 @@ class Game
     setup_game
     setup_players
     player = @first_player
-    number_of_moves = 1
     we_have_a_winner = false
     while @board.empty_squares? && !a_winner?
       square = pick_square(player)
       mark_placed = @board.put(player.mark, square)
       @presenter.update_board(@board.board)
-      number_of_moves += 1
       we_have_a_winner = a_winner?
       break if we_have_a_winner
 
