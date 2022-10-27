@@ -15,24 +15,24 @@ class Game
   def start
     setup_game
     setup_players
-    next_player = @first_player
+    player = @first_player
     number_of_moves = 1
     we_have_a_winner = false
     while @board.empty_squares? && !a_winner?
-      square = pick_square(next_player)
-      mark_placed = @board.put(next_player.mark, square)
+      square = pick_square(player)
+      mark_placed = @board.put(player.mark, square)
       @presenter.update_board(@board.board)
       number_of_moves += 1
       we_have_a_winner = a_winner?
       break if we_have_a_winner
 
       if mark_placed
-        next_player = next_player == @first_player ? @second_player : @first_player
+        player = player == @first_player ? @second_player : @first_player
       end
     end
 
     if we_have_a_winner
-      @presenter.alert("Player #{next_player.mark} has won")
+      @presenter.alert("Player #{player.mark} has won")
     else
       @presenter.alert("It's a tie")
     end
