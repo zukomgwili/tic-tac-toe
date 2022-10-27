@@ -136,15 +136,25 @@ describe Game do
         expect(board.board).to eq(['O', '', 'X', 'X', 'O', '', 'X', '', 'O'])
         expect(presenter).to have_received(:alert).with('Player O has won')
       end
+
+      example 'the player should be given an infinite number of attempts' do
+        allow(presenter).to receive(:prompt).and_return(1, 1, 9, 3, 7, 4, 6, 5, 2, 2, 2, 8)
+
+        game.start
+
+        expect(board.board).to eq(%w[X O X X X O O X O])
+        expect(presenter).to have_received(:alert).with("It's a tie")
+      end
     end
 
     describe 'when a player has selected a square' do
       example 'should update the presenter' do
-        allow(presenter).to receive(:prompt).and_return(1, 7)
+        allow(presenter).to receive(:prompt).and_return(1, 1, 9, 3, 7, 4, 6, 5, 2, 8)
 
         game.start
 
-        expect(presenter).to have_received(:update_board).with(['', '', '', '', '', '', 'X', '', '']).at_least(1)
+        expect(presenter).to have_received(:update_board)
+          .with(%w[X O X X X O O X O]).at_least(1)
       end
     end
   end

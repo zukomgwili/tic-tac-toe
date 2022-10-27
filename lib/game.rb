@@ -18,7 +18,7 @@ class Game
     next_player = @first_player
     number_of_moves = 1
     we_have_a_winner = false
-    while number_of_moves <= MAX_MOVE_COUNT
+    while @board.empty_squares? && !a_winner?
       square = pick_square(next_player)
       mark_placed = @board.put(next_player.mark, square)
       @presenter.update_board(@board.board)
