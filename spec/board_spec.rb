@@ -12,8 +12,9 @@ describe Board do
       it 'should place mark in square' do
         board = Board.new
 
-        board.put('X', 1)
+        result = board.put('X', 1)
 
+        expect(result).to eq(true)
         expect(board.inspect).to eq(['X', '', '', '', '', '', '', '', ''])
       end
 
@@ -21,8 +22,9 @@ describe Board do
         it 'should prevent placing of mark' do
           board = Board.new(['X', '', '', '', '', '', '', '', ''])
 
-          board.put('O', 1)
+          result = board.put('O', 1)
 
+          expect(result).to eq(false)
           expect(board.inspect).to eq(['X', '', '', '', '', '', '', '', ''])
         end
       end
