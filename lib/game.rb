@@ -3,10 +3,9 @@ class Game
 
   MAX_MOVE_COUNT = 9
 
-  def initialize(presenter, factory)
+  def initialize(presenter, board)
     @presenter = presenter
-    @factory = factory
-    @board = @factory.create_board
+    @board = board
     @options = ['Human vs Human', 'Human vs Computer', 'Computer vs Computer']
     @rules = ['Players take turns', 'Mark empty squares',
               'Row(up/down,across,diagonally) with 3 same marks wins the game',
@@ -60,11 +59,11 @@ class Game
     game_option = @presenter.prompt
     case game_option
     when 1
-      @first_player = @factory.create_human_player('X')
-      @second_player = @factory.create_human_player('O')
+      @first_player = Player.new('X')
+      @second_player = Player.new('O')
     when 2
-      @first_player = @factory.create_computer_player('X')
-      @second_player = @factory.create_human_player('O')
+      @first_player = ComputerPlayer.new('X')
+      @second_player = Player.new('O')
     end
   end
 
