@@ -11,7 +11,6 @@ describe HumanPlayer do
       $stdin = StringIO.new('1')
       player = HumanPlayer.new('X')
       board = Board.new
-      allow(board).to receive(:put).and_return(['X', '', '', '', '', '', '', '', ''])
 
       result = player.pick(board)
 
