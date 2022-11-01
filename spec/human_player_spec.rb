@@ -11,24 +11,11 @@ describe HumanPlayer do
       $stdin = StringIO.new('1')
       player = HumanPlayer.new('X')
       board = Board.new
+      allow(board).to receive(:put).and_return(['X', '', '', '', '', '', '', '', ''])
 
       result = player.pick(board)
 
-      expect(result).to be true
-      expect(board.board).to eq(['X', '', '', '', '', '', '', '', ''])
-    end
-
-    describe 'when a pick is not successful' do
-      it 'should return false' do
-        $stdin = StringIO.new('1')
-        player = HumanPlayer.new('X')
-        board = Board.new(['X', '', '', '', '', '', '', '', ''])
-
-        result = player.pick(board)
-
-        expect(result).to be false
-        expect(board.board).to eq(['X', '', '', '', '', '', '', '', ''])
-      end
+      expect(result).to eq(['X', '', '', '', '', '', '', '', ''])
     end
   end
 end

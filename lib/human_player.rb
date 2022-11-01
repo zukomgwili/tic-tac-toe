@@ -1,3 +1,5 @@
+require './lib/player'
+
 class HumanPlayer < Player
   def pick(board)
     square = gets.chomp.strip.to_i
