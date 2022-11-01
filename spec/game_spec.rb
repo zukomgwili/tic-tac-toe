@@ -43,7 +43,7 @@ describe Game do
       game.start
 
       expect(presenter).to have_received(:game_options).with(['Exit', 'Human vs Human', 'Human vs Computer',
-                                                              'Computer vs Computer']).once
+                                                              'Computer vs Computer', 'Computer vs Human']).once
     end
 
     describe 'when the first input is zero' do
