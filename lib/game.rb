@@ -1,4 +1,5 @@
 require './lib/player'
+require './lib/computer_player'
 
 class Game
   attr_reader :rules, :first_player, :second_player
