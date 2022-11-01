@@ -10,6 +10,6 @@ describe 'main' do
     $stdin = StringIO.new('0')
     expect do
       main
-    end.to_not raise_error(StandardError)
+    end.to_not raise_error
   end
 end

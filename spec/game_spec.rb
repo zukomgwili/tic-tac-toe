@@ -10,13 +10,15 @@ describe Game do
   before do
     presenter = Presenter.new
     board = Board.new
+    factory = Factory.new
+
     allow(presenter).to receive(:display_rules)
     allow(presenter).to receive(:display_board)
     allow(presenter).to receive(:update_board)
     allow(presenter).to receive(:alert)
     allow(presenter).to receive(:game_options)
 
-    game = Game.new(presenter, board)
+    game = Game.new(presenter, board, factory)
   end
 
   describe 'start' do
@@ -55,6 +57,17 @@ describe Game do
         expect(presenter).to have_received(:alert).with('Game exited!')
       end
     end
+
+    skip 'when the selected game option is computer vs human' do
+      it 'should allow the computer to go first' do
+        allow(presenter).to receive(:prompt).and_return(4, 1, 9, 3, 7, 4, 6, 5, 2, 8)
+
+        game.start
+
+        expect(presenter).to have_received(:alert).with("It's a tie")
+      end
+    end
+
     example 'a game that results in a tie' do
       allow(presenter).to receive(:prompt).and_return(1, 1, 9, 3, 7, 4, 6, 5, 2, 8)
 

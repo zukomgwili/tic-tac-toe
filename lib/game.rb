@@ -3,7 +3,7 @@ class Game
 
   MAX_MOVE_COUNT = 9
 
-  def initialize(presenter, board)
+  def initialize(presenter, board, _factory)
     @presenter = presenter
     @board = board
     @options = ['Exit', 'Human vs Human', 'Human vs Computer', 'Computer vs Computer', 'Computer vs Human']
