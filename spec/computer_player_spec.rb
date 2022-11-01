@@ -26,5 +26,19 @@ describe ComputerPlayer do
         expect(board.board).to eq(['O', 'X', 'O', 'X', 'X', 'O', '', '', ''])
       end
     end
+
+    describe 'when the board is not empty' do
+      describe 'and there are no more picks to be made' do
+        it 'should stop attempting to make a pick' do
+          player = ComputerPlayer.new('X')
+          board = Board.new(%w[X O X X X O O X O])
+
+          result = player.pick(board)
+
+          expect(result).to be false
+          expect(board.board).to eq(%w[X O X X X O O X O])
+        end
+      end
+    end
   end
 end

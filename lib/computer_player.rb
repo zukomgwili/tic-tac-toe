@@ -9,7 +9,7 @@ class ComputerPlayer < Player
   def pick(board)
     square_number = @square_numbers.shift
     successful_pick = board.put(@mark, square_number)
-    until successful_pick
+    until successful_pick || @square_numbers.empty?
       square_number = @square_numbers.shift
       successful_pick = board.put(@mark, square_number)
     end
