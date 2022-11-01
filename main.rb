@@ -13,4 +13,4 @@ def main
   game.start
 end
 
-main
+main if $PROGRAM_NAME == __FILE__

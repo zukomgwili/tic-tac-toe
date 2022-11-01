@@ -47,7 +47,7 @@ class Presenter
   def build_row(board, *args)
     board.values_at(*args).each_with_index.reduce('|') do |row, (mark, index)|
       row += " #{mark.length.zero? ? ' ' : mark} |"
-      row += "\n" if index === 2
+      row += "\n" if index == 2
       row
     end
   end
