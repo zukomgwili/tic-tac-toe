@@ -7,7 +7,6 @@ describe ComputerPlayer do
       it 'should pick a square to put a mark on' do
         player = ComputerPlayer.new('X')
         board = Board.new
-        allow(board).to receive(:put).and_return(['X', '', '', '', '', '', '', '', ''])
 
         result = player.pick(board)
 
@@ -20,8 +19,6 @@ describe ComputerPlayer do
         player = ComputerPlayer.new('X')
         board = Board.new(['O', 'X', 'O', 'X', '', 'O', '', '', ''])
 
-        allow(board).to receive(:put).and_return(['O', 'X', 'O', 'X', 'X', 'O', '', '', ''])
-
         result = player.pick(board)
 
         expect(result).to eq(['O', 'X', 'O', 'X', 'X', 'O', '', '', ''])
@@ -33,7 +30,6 @@ describe ComputerPlayer do
         it 'should stop attempting to make a pick' do
           player = ComputerPlayer.new('X')
           board = Board.new(%w[X O X X X O O X O])
-          allow(board).to receive(:put).and_return(%w[X O X X X O O X O])
 
           result = player.pick(board)
 
