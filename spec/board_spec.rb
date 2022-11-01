@@ -14,8 +14,7 @@ describe Board do
 
         result = board.put('X', 1)
 
-        expect(result).to eq(true)
-        expect(board.inspect).to eq(['X', '', '', '', '', '', '', '', ''])
+        expect(result).to eq(['X', '', '', '', '', '', '', '', ''])
       end
 
       describe 'when the square is not empty' do
@@ -24,8 +23,7 @@ describe Board do
 
           result = board.put('O', 1)
 
-          expect(result).to eq(false)
-          expect(board.inspect).to eq(['X', '', '', '', '', '', '', '', ''])
+          expect(result).to eq(['X', '', '', '', '', '', '', '', ''])
         end
       end
 
@@ -33,9 +31,9 @@ describe Board do
         it 'should prevent should prevent placing of mark' do
           board = Board.new
 
-          board.put('X', 0)
+          result = board.put('X', 0)
 
-          expect(board.inspect).to eq(['', '', '', '', '', '', '', '', ''])
+          expect(result).to eq(['', '', '', '', '', '', '', '', ''])
         end
       end
 
@@ -43,9 +41,9 @@ describe Board do
         it 'should place mark in the square' do
           board = Board.new
 
-          board.put('X', 9)
+          result = board.put('X', 9)
 
-          expect(board.inspect).to eq(['', '', '', '', '', '', '', '', 'X'])
+          expect(result).to eq(['', '', '', '', '', '', '', '', 'X'])
         end
       end
 
@@ -53,9 +51,9 @@ describe Board do
         it 'should prevent should prevent placing of mark' do
           board = Board.new
 
-          board.put('X', 10)
+          result = board.put('X', 10)
 
-          expect(board.inspect).to eq(['', '', '', '', '', '', '', '', ''])
+          expect(result).to eq(['', '', '', '', '', '', '', '', ''])
         end
       end
     end

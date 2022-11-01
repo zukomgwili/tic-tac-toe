@@ -9,10 +9,10 @@ class Board
     location = square - 1
     square_is_not_empty = @board[location] != ''
     square_location_is_invalid = location.negative? || location > 8
-    return false if square_is_not_empty || square_location_is_invalid
+    return @board if square_is_not_empty || square_location_is_invalid
 
     @board[location] = mark
-    true
+    @board
   end
 
   def inspect
