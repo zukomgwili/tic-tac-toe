@@ -6,7 +6,7 @@ class Game
   def initialize(presenter, board)
     @presenter = presenter
     @board = board
-    @options = ['Human vs Human', 'Human vs Computer', 'Computer vs Computer']
+    @options = ['Exit', 'Human vs Human', 'Human vs Computer', 'Computer vs Computer']
     @rules = ['Players take turns', 'Mark empty squares',
               'Row(up/down,across,diagonally) with 3 same marks wins the game',
               'Game is tied when all squares are filled but no winning row']

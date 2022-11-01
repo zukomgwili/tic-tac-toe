@@ -42,7 +42,7 @@ describe Game do
 
       game.start
 
-      expect(presenter).to have_received(:game_options).with(['Human vs Human', 'Human vs Computer',
+      expect(presenter).to have_received(:game_options).with(['Exit', 'Human vs Human', 'Human vs Computer',
                                                               'Computer vs Computer']).once
     end
 
