@@ -17,5 +17,18 @@ describe HumanPlayer do
       expect(result).to be true
       expect(board.board).to eq(['X', '', '', '', '', '', '', '', ''])
     end
+
+    describe 'when a pick is not successful' do
+      it 'should return false' do
+        $stdin = StringIO.new('1')
+        player = HumanPlayer.new('X')
+        board = Board.new(['X', '', '', '', '', '', '', '', ''])
+
+        result = player.pick(board)
+
+        expect(result).to be false
+        expect(board.board).to eq(['X', '', '', '', '', '', '', '', ''])
+      end
+    end
   end
 end
