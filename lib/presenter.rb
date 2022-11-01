@@ -36,7 +36,7 @@ class Presenter
 
   def game_options(options)
     formatted_options = options.each_with_index.reduce("OPTIONS\n") do |text, (option, index)|
-      text += "#{index + 1}. #{option}.\n"
+      text + "#{index}. #{option}\n"
     end
     formatted_options += "\nPlease select an option:"
     puts formatted_options

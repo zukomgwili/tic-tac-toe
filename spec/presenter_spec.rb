@@ -73,8 +73,8 @@ describe Presenter do
       presenter = Presenter.new
 
       expect do
-        presenter.game_options(['Human vs Human', 'Human vs Computer', 'Computer vs Computer'])
-      end.to output("OPTIONS\n1. Human vs Human.\n2. Human vs Computer.\n3. Computer vs Computer.\n\nPlease select an option:\n").to_stdout
+        presenter.game_options(['Exit', 'Human vs Human', 'Human vs Computer', 'Computer vs Computer'])
+      end.to output("OPTIONS\n0. Exit\n1. Human vs Human\n2. Human vs Computer\n3. Computer vs Computer\n\nPlease select an option:\n").to_stdout
     end
   end
 end
