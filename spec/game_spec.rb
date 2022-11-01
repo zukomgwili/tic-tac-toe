@@ -1,7 +1,7 @@
 require 'game'
 require 'presenter'
-require 'computer_player'
-require 'player'
+require 'board'
+require 'factory'
 
 describe Game do
   presenter = nil
