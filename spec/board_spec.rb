@@ -8,6 +8,14 @@ describe Board do
   end
 
   describe 'put' do
+    it 'should return a copy of the board snapshot' do
+      board = Board.new
+
+      result = board.put('X', 1)
+
+      expect(result.object_id).to_not eq(board.board.object_id)
+    end
+
     describe 'given a mark and a square' do
       it 'should place mark in square' do
         board = Board.new
@@ -15,6 +23,7 @@ describe Board do
         result = board.put('X', 1)
 
         expect(result).to eq(['X', '', '', '', '', '', '', '', ''])
+        expect(result.object_id).to_not eq(board.board.object_id)
       end
 
       describe 'when the square is not empty' do

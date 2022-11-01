@@ -12,7 +12,7 @@ class Board
     return @board if square_is_not_empty || square_location_is_invalid
 
     @board[location] = mark
-    @board
+    @board.clone
   end
 
   def inspect
