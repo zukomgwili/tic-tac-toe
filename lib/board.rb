@@ -26,4 +26,8 @@ class Board
   def marks_at(*args)
     @board.values_at(*args)
   end
+
+  def snapshot
+    @board.clone
+  end
 end

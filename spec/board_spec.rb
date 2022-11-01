@@ -85,4 +85,14 @@ describe Board do
       expect(board.marks_at(0, 3, 6)).to eq(%w[O O O])
     end
   end
+
+  describe 'snapshot' do
+    it 'should return a copy of the board state' do
+      board = Board.new
+
+      result = board.snapshot
+
+      expect(result.object_id).to_not eq(board.board.object_id)
+    end
+  end
 end
