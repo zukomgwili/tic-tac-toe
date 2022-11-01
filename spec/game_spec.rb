@@ -23,7 +23,7 @@ describe Game do
 
   describe 'start' do
     example 'displays rules' do
-      allow(presenter).to receive(:prompt).and_return(1, 1, 4, 2, 5, 3)
+      allow(presenter).to receive(:prompt).and_return(0)
 
       game.start
 
