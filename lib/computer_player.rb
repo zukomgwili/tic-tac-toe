@@ -1,7 +1,7 @@
 require 'player'
 
 class ComputerPlayer < Player
-  def pick(_board)
-    1
+  def pick(board)
+    board.put(@mark, 1)
   end
 end
