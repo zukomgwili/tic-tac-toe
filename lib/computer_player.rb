@@ -7,12 +7,15 @@ class ComputerPlayer < Player
   end
 
   def pick(board)
+    previous = board.board.clone
     square_number = @square_numbers.shift
-    successful_pick = board.put(@mark, square_number)
+    current = board.put(@mark, square_number)
+    successful_pick = current != previous
     until successful_pick || @square_numbers.empty?
       square_number = @square_numbers.shift
-      successful_pick = board.put(@mark, square_number)
+      current = board.put(@mark, square_number)
+      successful_pick = current != previous
     end
-    board
+    current
   end
 end
