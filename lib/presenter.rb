@@ -10,7 +10,7 @@ class Presenter
   def display_rules(rules)
     formatted_rules = 'RULES'
     formatted_rules += rules.each_with_index.reduce("\n") do |acc, (rule, index)|
-      acc += "#{index + 1}. #{rule}.\n"
+      acc + "#{index + 1}. #{rule}.\n"
     end
     formatted_rules += "\n"
     puts formatted_rules
