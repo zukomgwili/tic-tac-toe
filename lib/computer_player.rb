@@ -13,6 +13,6 @@ class ComputerPlayer < Player
       square_number = @square_numbers.shift
       successful_pick = board.put(@mark, square_number)
     end
-    successful_pick
+    board
   end
 end

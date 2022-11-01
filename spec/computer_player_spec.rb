@@ -10,8 +10,7 @@ describe ComputerPlayer do
 
         result = player.pick(board)
 
-        expect(result).to be true
-        expect(board.board).to eq(['X', '', '', '', '', '', '', '', ''])
+        expect(result.board).to eq(['X', '', '', '', '', '', '', '', ''])
       end
     end
 
@@ -22,8 +21,7 @@ describe ComputerPlayer do
 
         result = player.pick(board)
 
-        expect(result).to be true
-        expect(board.board).to eq(['O', 'X', 'O', 'X', 'X', 'O', '', '', ''])
+        expect(result.board).to eq(['O', 'X', 'O', 'X', 'X', 'O', '', '', ''])
       end
     end
 
@@ -35,8 +33,7 @@ describe ComputerPlayer do
 
           result = player.pick(board)
 
-          expect(result).to be false
-          expect(board.board).to eq(%w[X O X X X O O X O])
+          expect(result.board).to eq(%w[X O X X X O O X O])
         end
       end
     end
