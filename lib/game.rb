@@ -16,6 +16,8 @@ class Game
     setup_game
     game_option = @presenter.prompt
     case game_option
+    when 0
+      return @presenter.alert('Game exited!')
     when 1
       @first_player = Player.new('X')
       @second_player = Player.new('O')

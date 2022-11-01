@@ -46,6 +46,15 @@ describe Game do
                                                               'Computer vs Computer']).once
     end
 
+    describe 'when the first input is zero' do
+      it 'should end the game' do
+        allow(presenter).to receive(:prompt).and_return(0, 1, 9, 3, 7, 4, 6, 5, 2, 8)
+
+        game.start
+
+        expect(presenter).to have_received(:alert).with('Game exited!')
+      end
+    end
     example 'a game that results in a tie' do
       allow(presenter).to receive(:prompt).and_return(1, 1, 9, 3, 7, 4, 6, 5, 2, 8)
 
