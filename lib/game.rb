@@ -14,7 +14,15 @@ class Game
 
   def start
     setup_game
-    setup_players
+    game_option = @presenter.prompt
+    case game_option
+    when 1
+      @first_player = Player.new('X')
+      @second_player = Player.new('O')
+    when 2
+      @first_player = ComputerPlayer.new('X')
+      @second_player = Player.new('O')
+    end
     player = @first_player
     we_have_a_winner = false
     while @board.empty_squares? && !a_winner?
@@ -53,18 +61,6 @@ class Game
     @presenter.display_rules(@rules)
     @presenter.display_board(@board.board)
     @presenter.game_options(@options)
-  end
-
-  def setup_players
-    game_option = @presenter.prompt
-    case game_option
-    when 1
-      @first_player = Player.new('X')
-      @second_player = Player.new('O')
-    when 2
-      @first_player = ComputerPlayer.new('X')
-      @second_player = Player.new('O')
-    end
   end
 
   def a_winner?
