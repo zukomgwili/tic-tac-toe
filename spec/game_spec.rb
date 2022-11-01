@@ -50,7 +50,7 @@ describe Game do
 
     describe 'when the first input is zero' do
       it 'should end the game' do
-        allow(presenter).to receive(:prompt).and_return(0, 1, 9, 3, 7, 4, 6, 5, 2, 8)
+        allow(presenter).to receive(:prompt).and_return(0)
 
         game.start
 
