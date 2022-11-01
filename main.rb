@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require './lib/presenter'
 require './lib/board'
-require './lib/player'
 require './lib/factory'
 require './lib/game'
 
