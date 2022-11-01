@@ -22,8 +22,8 @@ class Game
       @first_player = Player.new('X')
       @second_player = Player.new('O')
     when 2
-      @first_player = ComputerPlayer.new('X')
-      @second_player = Player.new('O')
+      @first_player = Player.new('X')
+      @second_player = ComputerPlayer.new('O')
     end
     player = @first_player
     we_have_a_winner = false
