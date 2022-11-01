@@ -58,16 +58,6 @@ describe Game do
       end
     end
 
-    skip 'when the selected game option is computer vs human' do
-      it 'should allow the computer to go first' do
-        allow(presenter).to receive(:prompt).and_return(4, 1, 9, 3, 7, 4, 6, 5, 2, 8)
-
-        game.start
-
-        expect(presenter).to have_received(:alert).with("It's a tie")
-      end
-    end
-
     example 'a game that results in a tie' do
       allow(presenter).to receive(:prompt).and_return(1, 1, 9, 3, 7, 4, 6, 5, 2, 8)
 
