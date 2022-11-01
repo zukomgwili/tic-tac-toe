@@ -2,13 +2,20 @@ require 'human_player'
 require 'board'
 
 describe HumanPlayer do
+  after do
+    $stdin = STDIN
+  end
+
   describe 'pick' do
     it 'should pick a square to put a mark on' do
+      $stdin = StringIO.new('1')
       player = HumanPlayer.new('X')
+      board = Board.new
 
-      result = player.pick(Board.new)
+      result = player.pick(board)
 
-      expect(result).to eq(1)
+      expect(result).to be true
+      expect(board.board).to eq(['X', '', '', '', '', '', '', '', ''])
     end
   end
 end

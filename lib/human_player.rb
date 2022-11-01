@@ -1,5 +1,7 @@
 class HumanPlayer < Player
-  def pick(_board)
-    1
+  def pick(board)
+    square = gets.chomp.strip.to_i
+    board.put(@mark, square)
+    true
   end
 end
