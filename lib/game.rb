@@ -1,5 +1,6 @@
 require './lib/player'
 require './lib/computer_player'
+require './lib/human_player'
 
 class Game
   attr_reader :rules, :first_player, :second_player
@@ -16,7 +17,7 @@ class Game
               'Game is tied when all squares are filled but no winning row']
   end
 
-  def start
+  def start__X
     setup_game
     game_option = @presenter.prompt
     case game_option
@@ -50,7 +51,7 @@ class Game
     end
   end
 
-  def start_x
+  def start
     setup_game
     game_option = @presenter.prompt
     case game_option

@@ -1,9 +1,4 @@
 require 'game'
-require 'presenter'
-require 'board'
-require 'factory'
-require 'human_player'
-require 'input'
 
 describe Game do
   presenter = nil
@@ -67,7 +62,8 @@ describe Game do
     end
 
     example 'a game that results in a tie' do
-      allow(presenter).to receive(:prompt).and_return(1, 1, 9, 3, 7, 4, 6, 5, 2, 8)
+      allow(input).to receive(:get).and_return(1, 9, 3, 7, 4, 6, 5, 2, 8)
+      allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
 
@@ -76,7 +72,8 @@ describe Game do
     end
 
     example 'a game with a top-across winning row' do
-      allow(presenter).to receive(:prompt).and_return(1, 1, 4, 2, 5, 3)
+      allow(input).to receive(:get).and_return(1, 4, 2, 5, 3)
+      allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
 
@@ -85,7 +82,8 @@ describe Game do
     end
 
     example 'a game with a middle-across winning row ' do
-      allow(presenter).to receive(:prompt).and_return(1, 1, 4, 7, 5, 3, 6)
+      allow(input).to receive(:get).and_return(1, 4, 7, 5, 3, 6)
+      allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
 
@@ -94,7 +92,8 @@ describe Game do
     end
 
     example 'a game with a bottom-across winning row ' do
-      allow(presenter).to receive(:prompt).and_return(1, 7, 3, 8, 6, 9, 5)
+      allow(input).to receive(:get).and_return(7, 3, 8, 6, 9, 5)
+      allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
 
@@ -103,7 +102,8 @@ describe Game do
     end
 
     example 'a game with a left-down winning row ' do
-      allow(presenter).to receive(:prompt).and_return(1, 3, 1, 6, 4, 5, 7)
+      allow(input).to receive(:get).and_return(3, 1, 6, 4, 5, 7)
+      allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
 
@@ -112,7 +112,8 @@ describe Game do
     end
 
     example 'a game with a middle-down winning row ' do
-      allow(presenter).to receive(:prompt).and_return(1, 2, 1, 5, 4, 8)
+      allow(input).to receive(:get).and_return(2, 1, 5, 4, 8)
+      allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
 
@@ -121,7 +122,8 @@ describe Game do
     end
 
     example 'a game with a right-down winning row ' do
-      allow(presenter).to receive(:prompt).and_return(1, 7, 3, 8, 6, 4, 9)
+      allow(input).to receive(:get).and_return(7, 3, 8, 6, 4, 9)
+      allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
 
@@ -130,7 +132,8 @@ describe Game do
     end
 
     example 'a game with a bottom-left-top-right winning row ' do
-      allow(presenter).to receive(:prompt).and_return(1, 7, 4, 5, 1, 3)
+      allow(input).to receive(:get).and_return(7, 4, 5, 1, 3)
+      allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
 
@@ -139,7 +142,8 @@ describe Game do
     end
 
     example 'a game with a top-left-bottom-right winning row ' do
-      allow(presenter).to receive(:prompt).and_return(1, 7, 1, 4, 5, 3, 9)
+      allow(input).to receive(:get).and_return(7, 1, 4, 5, 3, 9)
+      allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
 
@@ -153,14 +157,15 @@ describe Game do
 
         allow(presenter).to receive(:prompt).and_return(1)
 
-        game.start_x
+        game.start
 
         expect(board.board).to eq(['O', '', 'X', 'X', 'O', '', 'X', '', 'O'])
         expect(presenter).to have_received(:alert).with('Player O has won')
       end
 
       example 'the player should be given an infinite number of attempts' do
-        allow(presenter).to receive(:prompt).and_return(1, 1, 9, 3, 7, 4, 6, 5, 2, 2, 2, 8)
+        allow(input).to receive(:get).and_return(1, 9, 3, 7, 4, 6, 5, 2, 2, 2, 8)
+        allow(presenter).to receive(:prompt).and_return(1)
 
         game.start
 
@@ -171,7 +176,8 @@ describe Game do
 
     describe 'when a player has selected a square' do
       example 'should update the presenter' do
-        allow(presenter).to receive(:prompt).and_return(1, 1, 9, 3, 7, 4, 6, 5, 2, 8)
+        allow(input).to receive(:get).and_return(1, 9, 3, 7, 4, 6, 5, 2, 8)
+        allow(presenter).to receive(:prompt).and_return(1)
 
         game.start
 
