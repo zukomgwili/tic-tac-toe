@@ -7,6 +7,7 @@ class HumanPlayer < Player
   end
 
   def pick(board)
+    @input.out("Player #{@mark}, please make your selection")
     square = @input.get
     board.put(@mark, square)
   end
