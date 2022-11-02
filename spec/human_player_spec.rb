@@ -1,15 +1,14 @@
 require 'human_player'
 require 'board'
+require 'input'
 
 describe HumanPlayer do
-  after do
-    $stdin = STDIN
-  end
-
   describe 'pick' do
     it 'should pick a square to put a mark on' do
-      $stdin = StringIO.new('1')
-      player = HumanPlayer.new('X')
+      input = Input.new
+      allow(input).to receive(:get).and_return(1)
+
+      player = HumanPlayer.new('X', input)
       board = Board.new
 
       result = player.pick(board)

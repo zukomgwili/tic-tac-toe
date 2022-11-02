@@ -1,6 +1,8 @@
+require './lib/input'
+
 class Factory
   def create_human_player(mark)
-    HumanPlayer.new(mark)
+    HumanPlayer.new(mark, Input.new)
   end
 
   def create_computer_player(mark)

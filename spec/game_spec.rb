@@ -2,15 +2,23 @@ require 'game'
 require 'presenter'
 require 'board'
 require 'factory'
+require 'human_player'
+require 'input'
 
 describe Game do
   presenter = nil
   board = nil
   game = nil
+  input = nil
+
   before do
     presenter = Presenter.new
     board = Board.new
     factory = Factory.new
+    input = Input.new
+
+    allow(factory).to receive(:create_human_player).and_return(HumanPlayer.new('X', input), HumanPlayer.new('O', input))
+    allow(factory).to receive(:create_computer_player).and_return(ComputerPlayer.new('X'))
 
     allow(presenter).to receive(:display_rules)
     allow(presenter).to receive(:display_board)
@@ -141,9 +149,11 @@ describe Game do
 
     describe 'when a player attempts to mark an already marked square' do
       example 'the player should be given another attempt' do
-        allow(presenter).to receive(:prompt).and_return(1, 7, 7, 1, 4, 5, 3, 9)
+        allow(input).to receive(:get).and_return(7, 7, 1, 4, 5, 3, 9)
 
-        game.start
+        allow(presenter).to receive(:prompt).and_return(1)
+
+        game.start_x
 
         expect(board.board).to eq(['O', '', 'X', 'X', 'O', '', 'X', '', 'O'])
         expect(presenter).to have_received(:alert).with('Player O has won')
