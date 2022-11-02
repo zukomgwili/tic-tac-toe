@@ -1,7 +1,7 @@
 require 'input_output'
 require 'stringio'
 
-describe Input do
+describe InputOutput do
   before do
     $stdin = StringIO.new('1 ')
   end
@@ -12,9 +12,9 @@ describe Input do
 
   describe 'in' do
     it 'should return square number submitted by player' do
-      input = Input.new
+      io = InputOutput.new
 
-      result = input.in
+      result = io.in
 
       expect(result).to eq(1)
     end
@@ -22,10 +22,10 @@ describe Input do
 
   describe 'out' do
     it 'should write to stdout' do
-      input = Input.new
+      io = InputOutput.new
 
       expect do
-        input.out('Hello, world!')
+        io.out('Hello, world!')
       end.to output("Hello, world!\n").to_stdout
     end
   end

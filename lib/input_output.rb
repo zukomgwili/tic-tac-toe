@@ -1,4 +1,4 @@
-class Input
+class InputOutput
   def in
     gets.chomp.strip.to_i
   end
