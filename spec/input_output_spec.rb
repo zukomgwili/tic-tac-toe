@@ -1,4 +1,4 @@
-require 'input'
+require 'input_output'
 require 'stringio'
 
 describe Input do

@@ -1,6 +1,6 @@
 require 'human_player'
 require 'board'
-require 'input'
+require 'input_output'
 
 describe HumanPlayer do
   describe 'pick' do

@@ -1,4 +1,4 @@
-require './lib/input'
+require './lib/input_output'
 
 class Factory
   def create_human_player(mark)
