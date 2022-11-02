@@ -9,7 +9,6 @@ class Game
     @presenter = presenter
     @board = board
     @factory = factory
-    @options = ['Exit', 'Human vs Human', 'Human vs Computer', 'Computer vs Computer', 'Computer vs Human']
     @rules = factory.create_rules
   end
 
@@ -58,6 +57,7 @@ class Game
                               'Row(up/down,across,diagonally) with 3 same marks wins the game',
                               'Game is tied when all squares are filled but no winning row'])
     @presenter.display_board(@board.board)
-    @presenter.game_options(@options)
+    @presenter.game_options(['Exit', 'Human vs Human', 'Human vs Computer', 'Computer vs Computer',
+                             'Computer vs Human'])
   end
 end
