@@ -19,4 +19,14 @@ describe Input do
       expect(result).to eq(1)
     end
   end
+
+  describe 'out' do
+    it 'should write to stdout' do
+      input = Input.new
+
+      expect do
+        input.out('Hello, world!')
+      end.to output("Hello, world!\n").to_stdout
+    end
+  end
 end
