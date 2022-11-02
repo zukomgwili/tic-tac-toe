@@ -17,40 +17,6 @@ class Game
               'Game is tied when all squares are filled but no winning row']
   end
 
-  def start__X
-    setup_game
-    game_option = @presenter.prompt
-    case game_option
-    when 0
-      return @presenter.alert('Game exited!')
-    when 1
-      @first_player = Player.new('X')
-      @second_player = Player.new('O')
-    when 2
-      @first_player = Player.new('X')
-      @second_player = ComputerPlayer.new('O')
-    end
-    player = @first_player
-    we_have_a_winner = false
-    while @board.empty_squares? && !a_winner?
-      square = pick_square(player)
-      mark_placed = @board.put(player.mark, square)
-      @presenter.update_board(@board.board)
-      we_have_a_winner = a_winner?
-      break if we_have_a_winner
-
-      if mark_placed
-        player = player == @first_player ? @second_player : @first_player
-      end
-    end
-
-    if we_have_a_winner
-      @presenter.alert("Player #{player.mark} has won")
-    else
-      @presenter.alert("It's a tie")
-    end
-  end
-
   def start
     setup_game
     game_option = @presenter.prompt
