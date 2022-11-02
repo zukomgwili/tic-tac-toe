@@ -19,21 +19,19 @@ class Game
 
     @first_player, @second_player = create_players(game_option)
     player = @first_player
-    we_have_a_winner = false
+
     until @rules.game_over?(@board)
       previous_board_snapshot = @board.snapshot
       board_snapshot = player.pick(@board)
-      mark_placed = board_snapshot != previous_board_snapshot
       @presenter.update_board(@board.board)
-      we_have_a_winner = @rules.a_winner?(@board)
-      break if we_have_a_winner
+      break if @rules.game_over?(@board)
 
-      if mark_placed
-        player = player == @first_player ? @second_player : @first_player
-      end
+      next if board_snapshot == previous_board_snapshot
+
+      player = player == @first_player ? @second_player : @first_player
     end
 
-    if we_have_a_winner
+    if @rules.a_winner?(@board)
       @presenter.alert("Player #{player.mark} has won")
     else
       @presenter.alert("It's a tie")
