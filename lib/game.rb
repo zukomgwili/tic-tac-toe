@@ -15,19 +15,9 @@ class Game
   def start
     setup_game
     game_option = @presenter.prompt
-    case game_option
-    when 0
-      return @presenter.alert('Game exited!')
-    when 1
-      @first_player = @factory.create_human_player('X')
-      @second_player = @factory.create_human_player('O')
-    when 2
-      @first_player = @factory.create_human_player('X')
-      @second_player = @factory.create_computer_player('O')
-    when 4
-      @first_player = @factory.create_computer_player('O')
-      @second_player = @factory.create_human_player('X')
-    end
+    return @presenter.alert('Game exited!') if game_option.zero?
+
+    @first_player, @second_player = create_players(game_option)
     player = @first_player
     we_have_a_winner = false
     until @rules.game_over?(@board)
@@ -59,5 +49,16 @@ class Game
     @presenter.display_board(@board.board)
     @presenter.game_options(['Exit', 'Human vs Human', 'Human vs Computer', 'Computer vs Computer',
                              'Computer vs Human'])
+  end
+
+  def create_players(game_type)
+    case game_type
+    when 1
+      [@factory.create_human_player('X'), @factory.create_human_player('O')]
+    when 2
+      [@factory.create_human_player('X'), @factory.create_computer_player('O')]
+    when 4
+      [@factory.create_computer_player('O'), @factory.create_human_player('X')]
+    end
   end
 end
