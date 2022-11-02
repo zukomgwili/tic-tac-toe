@@ -13,7 +13,7 @@ describe Game do
     input = Input.new
 
     allow(factory).to receive(:create_human_player).and_return(HumanPlayer.new('X', input), HumanPlayer.new('O', input))
-    allow(factory).to receive(:create_computer_player).and_return(ComputerPlayer.new('X'))
+    allow(factory).to receive(:create_computer_player).and_return(ComputerPlayer.new('O'))
 
     allow(presenter).to receive(:display_rules)
     allow(presenter).to receive(:display_board)
@@ -59,6 +59,16 @@ describe Game do
 
         expect(presenter).to have_received(:alert).with('Game exited!')
       end
+    end
+
+    example 'a human vs computer game' do
+      allow(input).to receive(:get).and_return(1, 3, 5, 7, 9)
+      allow(presenter).to receive(:prompt).and_return(2)
+
+      game.start
+
+      expect(board.board).to eq(['X', 'O', 'X', 'O', 'X', 'O', 'X', '', ''])
+      expect(presenter).to have_received(:alert).with('Player X has won')
     end
 
     example 'a game that results in a tie' do

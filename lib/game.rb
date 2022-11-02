@@ -61,7 +61,7 @@ class Game
       @first_player = @factory.create_human_player('X')
       @second_player = @factory.create_human_player('O')
     when 2
-      @first_player = Player.new('X')
+      @first_player = @factory.create_human_player('X')
       @second_player = ComputerPlayer.new('O')
     end
     player = @first_player
