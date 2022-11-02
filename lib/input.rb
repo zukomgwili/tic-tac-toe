@@ -1,5 +1,5 @@
 class Input
-  def get
+  def in
     gets.chomp.strip.to_i
   end
 

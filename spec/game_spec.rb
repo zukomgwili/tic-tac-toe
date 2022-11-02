@@ -63,7 +63,7 @@ describe Game do
 
     describe 'human vs computer game' do
       example 'a human takes the first turn' do
-        allow(input).to receive(:get).and_return(1, 3, 5, 7, 9)
+        allow(input).to receive(:in).and_return(1, 3, 5, 7, 9)
         allow(presenter).to receive(:prompt).and_return(2)
 
         game.start
@@ -72,7 +72,7 @@ describe Game do
         expect(presenter).to have_received(:alert).with('Player X has won')
       end
       example 'a computer takes first turn' do
-        allow(input).to receive(:get).and_return(4, 5)
+        allow(input).to receive(:in).and_return(4, 5)
         allow(presenter).to receive(:prompt).and_return(4)
 
         game.start
@@ -83,7 +83,7 @@ describe Game do
     end
 
     example 'a game that results in a tie' do
-      allow(input).to receive(:get).and_return(1, 9, 3, 7, 4, 6, 5, 2, 8)
+      allow(input).to receive(:in).and_return(1, 9, 3, 7, 4, 6, 5, 2, 8)
       allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
@@ -93,7 +93,7 @@ describe Game do
     end
 
     example 'a game with a top-across winning row' do
-      allow(input).to receive(:get).and_return(1, 4, 2, 5, 3)
+      allow(input).to receive(:in).and_return(1, 4, 2, 5, 3)
       allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
@@ -103,7 +103,7 @@ describe Game do
     end
 
     example 'a game with a middle-across winning row ' do
-      allow(input).to receive(:get).and_return(1, 4, 7, 5, 3, 6)
+      allow(input).to receive(:in).and_return(1, 4, 7, 5, 3, 6)
       allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
@@ -113,7 +113,7 @@ describe Game do
     end
 
     example 'a game with a bottom-across winning row ' do
-      allow(input).to receive(:get).and_return(7, 3, 8, 6, 9, 5)
+      allow(input).to receive(:in).and_return(7, 3, 8, 6, 9, 5)
       allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
@@ -123,7 +123,7 @@ describe Game do
     end
 
     example 'a game with a left-down winning row ' do
-      allow(input).to receive(:get).and_return(3, 1, 6, 4, 5, 7)
+      allow(input).to receive(:in).and_return(3, 1, 6, 4, 5, 7)
       allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
@@ -133,7 +133,7 @@ describe Game do
     end
 
     example 'a game with a middle-down winning row ' do
-      allow(input).to receive(:get).and_return(2, 1, 5, 4, 8)
+      allow(input).to receive(:in).and_return(2, 1, 5, 4, 8)
       allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
@@ -143,7 +143,7 @@ describe Game do
     end
 
     example 'a game with a right-down winning row ' do
-      allow(input).to receive(:get).and_return(7, 3, 8, 6, 4, 9)
+      allow(input).to receive(:in).and_return(7, 3, 8, 6, 4, 9)
       allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
@@ -153,7 +153,7 @@ describe Game do
     end
 
     example 'a game with a bottom-left-top-right winning row ' do
-      allow(input).to receive(:get).and_return(7, 4, 5, 1, 3)
+      allow(input).to receive(:in).and_return(7, 4, 5, 1, 3)
       allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
@@ -163,7 +163,7 @@ describe Game do
     end
 
     example 'a game with a top-left-bottom-right winning row ' do
-      allow(input).to receive(:get).and_return(7, 1, 4, 5, 3, 9)
+      allow(input).to receive(:in).and_return(7, 1, 4, 5, 3, 9)
       allow(presenter).to receive(:prompt).and_return(1)
 
       game.start
@@ -174,7 +174,7 @@ describe Game do
 
     describe 'when a player attempts to mark an already marked square' do
       example 'the player should be given another attempt' do
-        allow(input).to receive(:get).and_return(7, 7, 1, 4, 5, 3, 9)
+        allow(input).to receive(:in).and_return(7, 7, 1, 4, 5, 3, 9)
 
         allow(presenter).to receive(:prompt).and_return(1)
 
@@ -185,7 +185,7 @@ describe Game do
       end
 
       example 'the player should be given an infinite number of attempts' do
-        allow(input).to receive(:get).and_return(1, 9, 3, 7, 4, 6, 5, 2, 2, 2, 8)
+        allow(input).to receive(:in).and_return(1, 9, 3, 7, 4, 6, 5, 2, 2, 2, 8)
         allow(presenter).to receive(:prompt).and_return(1)
 
         game.start
@@ -197,7 +197,7 @@ describe Game do
 
     describe 'when a player has selected a square' do
       example 'should update the presenter' do
-        allow(input).to receive(:get).and_return(1, 9, 3, 7, 4, 6, 5, 2, 8)
+        allow(input).to receive(:in).and_return(1, 9, 3, 7, 4, 6, 5, 2, 8)
         allow(presenter).to receive(:prompt).and_return(1)
 
         game.start

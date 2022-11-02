@@ -10,11 +10,11 @@ describe Input do
     $stdin = STDIN
   end
 
-  describe 'get' do
+  describe 'in' do
     it 'should return square number submitted by player' do
       input = Input.new
 
-      result = input.get
+      result = input.in
 
       expect(result).to eq(1)
     end
