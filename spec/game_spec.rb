@@ -61,14 +61,25 @@ describe Game do
       end
     end
 
-    example 'a human vs computer game' do
-      allow(input).to receive(:get).and_return(1, 3, 5, 7, 9)
-      allow(presenter).to receive(:prompt).and_return(2)
+    describe 'human vs computer game' do
+      example 'a human takes the first turn' do
+        allow(input).to receive(:get).and_return(1, 3, 5, 7, 9)
+        allow(presenter).to receive(:prompt).and_return(2)
 
-      game.start
+        game.start
 
-      expect(board.board).to eq(['X', 'O', 'X', 'O', 'X', 'O', 'X', '', ''])
-      expect(presenter).to have_received(:alert).with('Player X has won')
+        expect(board.board).to eq(['X', 'O', 'X', 'O', 'X', 'O', 'X', '', ''])
+        expect(presenter).to have_received(:alert).with('Player X has won')
+      end
+      example 'a computer takes first turn' do
+        allow(input).to receive(:get).and_return(4, 5)
+        allow(presenter).to receive(:prompt).and_return(4)
+
+        game.start
+
+        expect(board.board).to eq(['O', 'O', 'O', 'X', 'X', '', '', '', ''])
+        expect(presenter).to have_received(:alert).with('Player O has won')
+      end
     end
 
     example 'a game that results in a tie' do
