@@ -10,9 +10,7 @@ class Game
     @board = board
     @factory = factory
     @options = ['Exit', 'Human vs Human', 'Human vs Computer', 'Computer vs Computer', 'Computer vs Human']
-    @rules = ['Players take turns', 'Mark empty squares',
-              'Row(up/down,across,diagonally) with 3 same marks wins the game',
-              'Game is tied when all squares are filled but no winning row']
+    @rules = factory.create_rules
   end
 
   def start
@@ -33,12 +31,12 @@ class Game
     end
     player = @first_player
     we_have_a_winner = false
-    while @board.empty_squares? && !a_winner?
+    until @rules.game_over?(@board)
       previous_board_snapshot = @board.snapshot
       board_snapshot = player.pick(@board)
       mark_placed = board_snapshot != previous_board_snapshot
       @presenter.update_board(@board.board)
-      we_have_a_winner = a_winner?
+      we_have_a_winner = @rules.a_winner?(@board)
       break if we_have_a_winner
 
       if mark_placed
@@ -56,21 +54,10 @@ class Game
   private
 
   def setup_game
-    @presenter.display_rules(@rules)
+    @presenter.display_rules(['Players take turns', 'Mark empty squares',
+                              'Row(up/down,across,diagonally) with 3 same marks wins the game',
+                              'Game is tied when all squares are filled but no winning row'])
     @presenter.display_board(@board.board)
     @presenter.game_options(@options)
-  end
-
-  def a_winner?
-    winning_rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [6, 4, 2], [0, 4, 8]]
-    winning_rows.each do |row|
-      return true if winning_row?(*row)
-    end
-    false
-  end
-
-  def winning_row?(*args)
-    row = @board.marks_at(*args)
-    row.all? { |mark| mark.strip.length == 1 } && row.uniq.length == 1
   end
 end
