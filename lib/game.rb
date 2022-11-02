@@ -5,8 +5,6 @@ require './lib/human_player'
 class Game
   attr_reader :rules, :first_player, :second_player
 
-  MAX_MOVE_COUNT = 9
-
   def initialize(presenter, board, factory)
     @presenter = presenter
     @board = board
@@ -56,17 +54,6 @@ class Game
   end
 
   private
-
-  def pick_square(next_player)
-    square_number = 0
-    if next_player.respond_to?(:pick)
-      square_number = next_player.pick(@board.board)
-    else
-      @presenter.alert("Player #{next_player.mark}, please make your selection")
-      square_number = @presenter.prompt
-    end
-    square_number
-  end
 
   def setup_game
     @presenter.display_rules(@rules)
