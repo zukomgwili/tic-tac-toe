@@ -55,6 +55,8 @@ class Game
       [@factory.create_human_player('X'), @factory.create_human_player('O')]
     when 2
       [@factory.create_human_player('X'), @factory.create_computer_player('O')]
+    when 3
+      [@factory.create_computer_player('X'), @factory.create_computer_player('O')]
     when 4
       [@factory.create_computer_player('O'), @factory.create_human_player('X')]
     end
