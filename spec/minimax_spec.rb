@@ -54,14 +54,14 @@ describe 'minimax' do
       it "should get the larger of the minimizer's moves" do
         result = minimax([3, 5, 2, 4, 1, 9, 8, 7, 9, 8, 7, 6, 5, 4, 3, 2], true, 4, 0, 0)
 
-        expect(result).to eq(7)
+        expect(result).to eq(4)
       end
     end
     describe "when the minimizer looks ahead to see the maximizer's optimal moves" do
       it "should get the smaller of the maximizer's moves" do
         result = minimax([3, 5, 2, 4, 1, 9, 8, 7, 9, 8, 7, 6, 5, 4, 3, 2], false, 4, 0, 0)
 
-        expect(result).to eq(4)
+        expect(result).to eq(7)
       end
     end
   end
