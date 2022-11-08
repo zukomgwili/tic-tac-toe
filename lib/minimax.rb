@@ -1,16 +1,18 @@
-def minimax(nodes, is_maximizer, _max_depth, _depth, _node_index)
-  depth = calculate_tree_height(nodes.length)
+def minimax(scores, is_maximizer, max_depth, _depth, _node_index)
+  return scores[_node_index] if _depth == max_depth
+
+  depth = calculate_tree_height(scores.length)
   if is_maximizer
-    return nodes.max if nodes.length == 2
+    return scores.max if scores.length == 2
 
     if depth == 2
-      chunks = nodes.each_slice(2).to_a
+      chunks = scores.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
       return reduced.max
     end
 
     if depth == 3
-      chunks = nodes.each_slice(2).to_a
+      chunks = scores.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
@@ -18,7 +20,7 @@ def minimax(nodes, is_maximizer, _max_depth, _depth, _node_index)
     end
 
     if depth == 4
-      chunks = nodes.each_slice(2).to_a
+      chunks = scores.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
@@ -29,16 +31,16 @@ def minimax(nodes, is_maximizer, _max_depth, _depth, _node_index)
       reduced.max
     end
   else
-    return nodes.min if nodes.length == 2
+    return scores.min if scores.length == 2
 
     if depth == 2
-      chunks = nodes.each_slice(2).to_a
+      chunks = scores.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
       return reduced.min
     end
 
     if depth == 3
-      chunks = nodes.each_slice(2).to_a
+      chunks = scores.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
@@ -46,7 +48,7 @@ def minimax(nodes, is_maximizer, _max_depth, _depth, _node_index)
     end
 
     if depth == 4
-      chunks = nodes.each_slice(2).to_a
+      chunks = scores.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
