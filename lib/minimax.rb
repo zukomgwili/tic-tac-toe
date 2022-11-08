@@ -1,16 +1,16 @@
-def minimax(leaves, is_maximizer, _max_depth)
-  depth = calculate_tree_height(leaves.length)
+def minimax(nodes, is_maximizer, _max_depth, _depth, _node_index)
+  depth = calculate_tree_height(nodes.length)
   if is_maximizer
-    return leaves.max if leaves.length == 2
+    return nodes.max if nodes.length == 2
 
     if depth == 2
-      chunks = leaves.each_slice(2).to_a
+      chunks = nodes.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
       return reduced.max
     end
 
     if depth == 3
-      chunks = leaves.each_slice(2).to_a
+      chunks = nodes.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
@@ -18,7 +18,7 @@ def minimax(leaves, is_maximizer, _max_depth)
     end
 
     if depth == 4
-      chunks = leaves.each_slice(2).to_a
+      chunks = nodes.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
@@ -29,16 +29,16 @@ def minimax(leaves, is_maximizer, _max_depth)
       reduced.max
     end
   else
-    return leaves.min if leaves.length == 2
+    return nodes.min if nodes.length == 2
 
     if depth == 2
-      chunks = leaves.each_slice(2).to_a
+      chunks = nodes.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
       return reduced.min
     end
 
     if depth == 3
-      chunks = leaves.each_slice(2).to_a
+      chunks = nodes.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
@@ -46,7 +46,7 @@ def minimax(leaves, is_maximizer, _max_depth)
     end
 
     if depth == 4
-      chunks = leaves.each_slice(2).to_a
+      chunks = nodes.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
