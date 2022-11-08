@@ -1,4 +1,4 @@
-def minimax(leaves, is_maximizer)
+def minimax(leaves, is_maximizer, _max_depth)
   depth = calculate_tree_height(leaves.length)
   if is_maximizer
     return leaves.max if leaves.length == 2
