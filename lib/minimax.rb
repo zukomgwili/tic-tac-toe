@@ -14,6 +14,18 @@ def minimax(leaves, is_maximizer)
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
+      return reduced.max
+    end
+
+    if depth == 4
+      chunks = leaves.each_slice(2).to_a
+      reduced = chunks.reduce([]) { |acc, array| acc << array.max }
+      chunks = reduced.each_slice(2).to_a
+      reduced = chunks.reduce([]) { |acc, array| acc << array.min }
+      chunks = reduced.each_slice(2).to_a
+      reduced = chunks.reduce([]) { |acc, array| acc << array.max }
+      chunks = reduced.each_slice(2).to_a
+      reduced = chunks.reduce([]) { |acc, array| acc << array.min }
       reduced.max
     end
   else
@@ -27,6 +39,18 @@ def minimax(leaves, is_maximizer)
 
     if depth == 3
       chunks = leaves.each_slice(2).to_a
+      reduced = chunks.reduce([]) { |acc, array| acc << array.min }
+      chunks = reduced.each_slice(2).to_a
+      reduced = chunks.reduce([]) { |acc, array| acc << array.max }
+      return reduced.min
+    end
+
+    if depth == 4
+      chunks = leaves.each_slice(2).to_a
+      reduced = chunks.reduce([]) { |acc, array| acc << array.min }
+      chunks = reduced.each_slice(2).to_a
+      reduced = chunks.reduce([]) { |acc, array| acc << array.max }
+      chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.min }
       chunks = reduced.each_slice(2).to_a
       reduced = chunks.reduce([]) { |acc, array| acc << array.max }
