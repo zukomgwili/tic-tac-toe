@@ -20,7 +20,7 @@ describe 'minimax' do
   describe 'given a binary tree with a depth of two' do
     describe "when the maximizer looks ahead to see the minimizer's optimal moves" do
       it "should get the larger of the minimizer's moves" do
-        result = minimax([3, 6, 2, 4], true)
+        result = minimax([3, 5, 2, 4], true)
 
         expect(result).to eq(3)
       end
