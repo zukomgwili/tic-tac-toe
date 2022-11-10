@@ -214,5 +214,14 @@ describe ComputerPlayer do
         expect(result).to eq(-1)
       end
     end
+    describe 'given a board with player winner' do
+      it 'should return the value 1' do
+        player = ComputerPlayer.new('X')
+
+        result = player.find_best_move(['X', 'X', 'X', 'O', 'O', '', '', '', ''], true)
+
+        expect(result).to eq(1)
+      end
+    end
   end
 end
