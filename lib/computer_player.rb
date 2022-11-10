@@ -33,32 +33,32 @@ class ComputerPlayer < Player
     row.all? { |mark| mark.strip.length == 1 } && row.uniq.length == 1
   end
 
-  def find_best_move(board_snapshot, is_maximizer)
-    score = evaluate(board_snapshot)
-    return score if [-1, 1].include?(score)
+  def calc_move(board_snapshot, is_maximizer)
+    value = evaluate(board_snapshot)
+    return value if [-1, 1].include?(value)
 
     return 0 if board_snapshot.all? { |square| square.strip.length.zero? == false }
 
     if is_maximizer
-      best = -1000
+      best_value = -1000
       board_snapshot.each_with_index do |square, index|
         next unless square.empty?
 
         board_snapshot[index] = @mark
-        best = [best, find_best_move(board_snapshot, false)].max
+        best_value = [best_value, calc_move(board_snapshot, false)].max
         board_snapshot[index] = ''
       end
     else
-      best = 1000
+      best_value = 1000
       board_snapshot.each_with_index do |square, index|
         next unless square.empty?
 
         board_snapshot[index] = 'O'
-        best = [best, find_best_move(board_snapshot, true)].min
+        best_value = [best_value, calc_move(board_snapshot, true)].min
         board_snapshot[index] = ''
       end
     end
-    best
+    best_value
   end
 
   private

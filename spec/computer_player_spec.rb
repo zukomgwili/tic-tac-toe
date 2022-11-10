@@ -204,12 +204,12 @@ describe ComputerPlayer do
     end
   end
 
-  describe 'find_best_move' do
+  describe 'calc_move' do
     describe 'given a board with opponent winner' do
       it 'should return the value -1' do
         player = ComputerPlayer.new('X')
 
-        result = player.find_best_move(['O', 'O', 'O', 'X', 'X', '', 'X', '', ''], true)
+        result = player.calc_move(['O', 'O', 'O', 'X', 'X', '', 'X', '', ''], true)
 
         expect(result).to eq(-1)
       end
@@ -218,7 +218,7 @@ describe ComputerPlayer do
       it 'should return the value 1' do
         player = ComputerPlayer.new('X')
 
-        result = player.find_best_move(['X', 'X', 'X', 'O', 'O', '', '', '', ''], true)
+        result = player.calc_move(['X', 'X', 'X', 'O', 'O', '', '', '', ''], true)
 
         expect(result).to eq(1)
       end
@@ -227,7 +227,7 @@ describe ComputerPlayer do
       it 'should return the value 0' do
         player = ComputerPlayer.new('X')
 
-        result = player.find_best_move(%w[X O X X O X O X O], true)
+        result = player.calc_move(%w[X O X X O X O X O], true)
 
         expect(result).to eq(0)
       end
@@ -236,7 +236,7 @@ describe ComputerPlayer do
       it 'should return the best value' do
         player = ComputerPlayer.new('X')
 
-        result = player.find_best_move(['', '', '', '', '', '', '', '', ''], true)
+        result = player.calc_move(['', '', '', '', '', '', '', '', ''], true)
 
         expect(result).to eq(0)
       end
@@ -245,7 +245,7 @@ describe ComputerPlayer do
       it 'should return the best score' do
         player = ComputerPlayer.new('X')
 
-        result = player.find_best_move(['X', 'O', '', '', '', '', '', '', ''], true)
+        result = player.calc_move(['X', 'O', '', '', '', '', '', '', ''], true)
 
         expect(result).to eq(1)
       end
