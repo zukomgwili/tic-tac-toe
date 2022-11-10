@@ -184,5 +184,14 @@ describe ComputerPlayer do
         expect(result).to eq(-1)
       end
     end
+    describe 'when neither player have won' do
+      it 'should return the value 0' do
+        player = ComputerPlayer.new('X')
+
+        result = player.evaluate(%w[X O X X O X O X O])
+
+        expect(result).to eq(0)
+      end
+    end
   end
 end
