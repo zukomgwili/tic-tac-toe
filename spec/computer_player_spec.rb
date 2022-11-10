@@ -203,4 +203,16 @@ describe ComputerPlayer do
       end
     end
   end
+
+  describe 'find_best_move' do
+    describe 'given a board with opponent winner' do
+      it 'should return the value -1' do
+        player = ComputerPlayer.new('X')
+
+        result = player.find_best_move(['O', 'O', 'O', 'X', 'X', '', 'X', '', ''], true)
+
+        expect(result).to eq(-1)
+      end
+    end
+  end
 end

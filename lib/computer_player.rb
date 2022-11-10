@@ -33,6 +33,10 @@ class ComputerPlayer < Player
     row.all? { |mark| mark.strip.length == 1 } && row.uniq.length == 1
   end
 
+  def find_best_move(_board_snapshot, _is_maximizer)
+    -1
+  end
+
   private
 
   def player_winner?(board_snapshot, *row)
