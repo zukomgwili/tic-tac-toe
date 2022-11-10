@@ -29,14 +29,14 @@ class ComputerPlayer < Player
        (board_snapshot[0] == board_snapshot[4] && board_snapshot[4] == board_snapshot[8] && board_snapshot[8] == @mark) ||
        (board_snapshot[6] == board_snapshot[4] && board_snapshot[4] == board_snapshot[2] && board_snapshot[2] == @mark)
       1
-    elsif (board_snapshot[0] == board_snapshot[1] && board_snapshot[1] == board_snapshot[2] && board_snapshot[2] != @mark) ||
-          (board_snapshot[3] == board_snapshot[4] && board_snapshot[4] == board_snapshot[5] && board_snapshot[5] != @mark) ||
-          (board_snapshot[6] == board_snapshot[7] && board_snapshot[7] == board_snapshot[8] && board_snapshot[8] != @mark) ||
-          (board_snapshot[0] == board_snapshot[3] && board_snapshot[3] == board_snapshot[6] && board_snapshot[6] != @mark) ||
-          (board_snapshot[1] == board_snapshot[4] && board_snapshot[4] == board_snapshot[7] && board_snapshot[7] != @mark) ||
-          (board_snapshot[2] == board_snapshot[5] && board_snapshot[5] == board_snapshot[8] && board_snapshot[8] != @mark) ||
-          (board_snapshot[0] == board_snapshot[4] && board_snapshot[4] == board_snapshot[8] && board_snapshot[8] != @mark) ||
-          (board_snapshot[6] == board_snapshot[4] && board_snapshot[4] == board_snapshot[2] && board_snapshot[2] != @mark)
+    elsif (board_snapshot[0] == board_snapshot[1] && board_snapshot[1] == board_snapshot[2] && board_snapshot[2] != @mark && !board_snapshot[2].empty?) ||
+          (board_snapshot[3] == board_snapshot[4] && board_snapshot[4] == board_snapshot[5] && board_snapshot[5] != @mark && !board_snapshot[5].empty?) ||
+          (board_snapshot[6] == board_snapshot[7] && board_snapshot[7] == board_snapshot[8] && board_snapshot[8] != @mark && !board_snapshot[8].empty?) ||
+          (board_snapshot[0] == board_snapshot[3] && board_snapshot[3] == board_snapshot[6] && board_snapshot[6] != @mark && !board_snapshot[6].empty?) ||
+          (board_snapshot[1] == board_snapshot[4] && board_snapshot[4] == board_snapshot[7] && board_snapshot[7] != @mark && !board_snapshot[7].empty?) ||
+          (board_snapshot[2] == board_snapshot[5] && board_snapshot[5] == board_snapshot[8] && board_snapshot[8] != @mark && !board_snapshot[8].empty?) ||
+          (board_snapshot[0] == board_snapshot[4] && board_snapshot[4] == board_snapshot[8] && board_snapshot[8] != @mark && !board_snapshot[8].empty?) ||
+          (board_snapshot[6] == board_snapshot[4] && board_snapshot[4] == board_snapshot[2] && board_snapshot[2] != @mark && !board_snapshot[2].empty?)
       -1
     else
       0

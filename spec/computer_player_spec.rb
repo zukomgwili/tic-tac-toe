@@ -193,5 +193,14 @@ describe ComputerPlayer do
         expect(result).to eq(0)
       end
     end
+    describe 'when the board is empty' do
+      it 'should return the value 0' do
+        player = ComputerPlayer.new('X')
+
+        result = player.evaluate(['', '', '', '', '', '', '', '', ''])
+
+        expect(result).to eq(0)
+      end
+    end
   end
 end
