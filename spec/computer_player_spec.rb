@@ -223,5 +223,14 @@ describe ComputerPlayer do
         expect(result).to eq(1)
       end
     end
+    describe 'when the board evaluates to a draw' do
+      it 'should return the value 0' do
+        player = ComputerPlayer.new('X')
+
+        result = player.find_best_move(%w[X O X X O X O X O], true)
+
+        expect(result).to eq(0)
+      end
+    end
   end
 end
