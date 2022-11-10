@@ -139,11 +139,11 @@ describe ComputerPlayer do
         expect(result).to eq(1)
       end
     end
-    skip 'when the opponent has a winning right column' do
+    describe 'when the opponent has a winning right column' do
       it 'should return the value -1' do
         player = ComputerPlayer.new('X')
 
-        result = player.evaluate(['X', 'O', 'X', 'X', 'O', '', '', 'O', ''])
+        result = player.evaluate(['X', 'X', 'O', 'X', '', 'O', '', '', 'O'])
 
         expect(result).to eq(-1)
       end
