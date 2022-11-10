@@ -6,8 +6,8 @@ class Factory
     HumanPlayer.new(mark, InputOutput.new)
   end
 
-  def create_computer_player(mark)
-    ComputerPlayer.new(mark)
+  def create_computer_player(mark, opponent)
+    ComputerPlayer.new(mark, opponent)
   end
 
   def create_rules

@@ -14,7 +14,7 @@ describe Game do
     io = InputOutput.new
 
     allow(factory).to receive(:create_human_player).and_return(HumanPlayer.new('X', io), HumanPlayer.new('O', io))
-    allow(factory).to receive(:create_computer_player).and_return(ComputerPlayer.new('O'))
+    allow(factory).to receive(:create_computer_player).and_return(ComputerPlayer.new('O', 'X'))
 
     allow(presenter).to receive(:display_rules)
     allow(presenter).to receive(:display_board)
@@ -84,7 +84,8 @@ describe Game do
     end
 
     example 'a computer vs computer game' do
-      allow(factory).to receive(:create_computer_player).and_return(ComputerPlayer.new('X'), ComputerPlayer.new('O'))
+      allow(factory).to receive(:create_computer_player).and_return(ComputerPlayer.new('X', 'O'),
+                                                                    ComputerPlayer.new('O', 'X'))
       allow(presenter).to receive(:prompt).and_return(3)
 
       game.start

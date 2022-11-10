@@ -1,8 +1,9 @@
 require './lib/player'
 
 class ComputerPlayer < Player
-  def initialize(mark)
+  def initialize(mark, opponent)
     super(mark)
+    @opponent = opponent
     @square_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
@@ -53,7 +54,7 @@ class ComputerPlayer < Player
       board_snapshot.each_with_index do |square, index|
         next unless square.empty?
 
-        board_snapshot[index] = 'O'
+        board_snapshot[index] = @opponent
         best_value = [best_value, calc_move(board_snapshot, true)].min
         board_snapshot[index] = ''
       end
