@@ -232,5 +232,14 @@ describe ComputerPlayer do
         expect(result).to eq(0)
       end
     end
+    describe 'given an empty board' do
+      it 'should return the best value' do
+        player = ComputerPlayer.new('X')
+
+        result = player.find_best_move(['', '', '', '', '', '', '', '', ''], true)
+
+        expect(result).to eq(0)
+      end
+    end
   end
 end
