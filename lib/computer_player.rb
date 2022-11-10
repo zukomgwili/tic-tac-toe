@@ -61,6 +61,20 @@ class ComputerPlayer < Player
     best_value
   end
 
+  def find_best_move(board_snapshot)
+    best_move_value = -1000
+    best_move = nil
+    board_snapshot.each_with_index do |square, index|
+      next unless square.empty?
+
+      board_snapshot[index] = @mark
+      move_value = calc_move(board_snapshot, false)
+      board_snapshot[index] = ''
+      best_move = index if move_value > best_move_value
+    end
+    best_move
+  end
+
   private
 
   def player_winner?(board_snapshot, *row)

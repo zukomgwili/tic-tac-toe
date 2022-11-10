@@ -251,4 +251,16 @@ describe ComputerPlayer do
       end
     end
   end
+
+  describe 'find_best_move' do
+    describe 'given an empty board' do
+      it 'should return the best square to mark' do
+        player = ComputerPlayer.new('X')
+
+        result = player.find_best_move(['', '', '', '', '', '', '', '', ''])
+
+        expect(result).to eq(8)
+      end
+    end
+  end
 end
