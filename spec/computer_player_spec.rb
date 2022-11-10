@@ -85,11 +85,11 @@ describe ComputerPlayer do
         expect(result).to eq(1)
       end
     end
-    skip 'when the opponent has a winning bottom-across row' do
+    describe 'when the opponent has a winning bottom-across row' do
       it 'should return the value -1' do
         player = ComputerPlayer.new('X')
 
-        result = player.evaluate(['', 'X', 'X', 'O', 'O', 'O', 'X', '', ''])
+        result = player.evaluate(['', 'X', 'X', 'X', '', '', 'O', 'O', 'O'])
 
         expect(result).to eq(-1)
       end
