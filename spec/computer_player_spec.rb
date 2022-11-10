@@ -259,7 +259,7 @@ describe ComputerPlayer do
 
         result = player.find_best_move(['', '', '', '', '', '', '', '', ''])
 
-        expect(result).to eq(8)
+        expect(result).to eq(9)
       end
     end
   end

@@ -71,7 +71,7 @@ class ComputerPlayer < Player
       board_snapshot[index] = @mark
       move_value = calc_move(board_snapshot, false)
       board_snapshot[index] = ''
-      best_move = index if move_value > best_move_value
+      best_move = index + 1 if move_value > best_move_value
     end
     best_move
   end
