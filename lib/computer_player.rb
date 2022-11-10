@@ -20,26 +20,16 @@ class ComputerPlayer < Player
   end
 
   def evaluate(board_snapshot)
-    if (board_snapshot[0] == board_snapshot[1] && board_snapshot[1] == board_snapshot[2] && board_snapshot[2] == @mark) ||
-       (board_snapshot[3] == board_snapshot[4] && board_snapshot[4] == board_snapshot[5] && board_snapshot[5] == @mark) ||
-       (board_snapshot[6] == board_snapshot[7] && board_snapshot[7] == board_snapshot[8] && board_snapshot[8] == @mark) ||
-       (board_snapshot[0] == board_snapshot[3] && board_snapshot[3] == board_snapshot[6] && board_snapshot[6] == @mark) ||
-       (board_snapshot[1] == board_snapshot[4] && board_snapshot[4] == board_snapshot[7] && board_snapshot[7] == @mark) ||
-       (board_snapshot[2] == board_snapshot[5] && board_snapshot[5] == board_snapshot[8] && board_snapshot[8] == @mark) ||
-       (board_snapshot[0] == board_snapshot[4] && board_snapshot[4] == board_snapshot[8] && board_snapshot[8] == @mark) ||
-       (board_snapshot[6] == board_snapshot[4] && board_snapshot[4] == board_snapshot[2] && board_snapshot[2] == @mark)
-      1
-    elsif (board_snapshot[0] == board_snapshot[1] && board_snapshot[1] == board_snapshot[2] && board_snapshot[2] != @mark && !board_snapshot[2].empty?) ||
-          (board_snapshot[3] == board_snapshot[4] && board_snapshot[4] == board_snapshot[5] && board_snapshot[5] != @mark && !board_snapshot[5].empty?) ||
-          (board_snapshot[6] == board_snapshot[7] && board_snapshot[7] == board_snapshot[8] && board_snapshot[8] != @mark && !board_snapshot[8].empty?) ||
-          (board_snapshot[0] == board_snapshot[3] && board_snapshot[3] == board_snapshot[6] && board_snapshot[6] != @mark && !board_snapshot[6].empty?) ||
-          (board_snapshot[1] == board_snapshot[4] && board_snapshot[4] == board_snapshot[7] && board_snapshot[7] != @mark && !board_snapshot[7].empty?) ||
-          (board_snapshot[2] == board_snapshot[5] && board_snapshot[5] == board_snapshot[8] && board_snapshot[8] != @mark && !board_snapshot[8].empty?) ||
-          (board_snapshot[0] == board_snapshot[4] && board_snapshot[4] == board_snapshot[8] && board_snapshot[8] != @mark && !board_snapshot[8].empty?) ||
-          (board_snapshot[6] == board_snapshot[4] && board_snapshot[4] == board_snapshot[2] && board_snapshot[2] != @mark && !board_snapshot[2].empty?)
-      -1
-    else
-      0
+    winning_rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [6, 4, 2], [0, 4, 8]]
+    winning_rows.each do |row|
+      return 1 if winning_row?(board_snapshot, *row) && board_snapshot.values_at(*row).include?(@mark)
+      return -1 if winning_row?(board_snapshot, *row) && !board_snapshot.values_at(*row).include?(@mark)
     end
+    0
+  end
+
+  def winning_row?(board_snapshot, *args)
+    row = board_snapshot.values_at(*args)
+    row.all? { |mark| mark.strip.length == 1 } && row.uniq.length == 1
   end
 end
