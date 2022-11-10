@@ -20,7 +20,8 @@ class ComputerPlayer < Player
   end
 
   def evaluate(board_snapshot)
-    if board_snapshot[0] == board_snapshot[1] && board_snapshot[1] == board_snapshot[2] && board_snapshot[2] == @mark
+    if (board_snapshot[0] == board_snapshot[1] && board_snapshot[1] == board_snapshot[2] && board_snapshot[2] == @mark) ||
+       (board_snapshot[3] == board_snapshot[4] && board_snapshot[4] == board_snapshot[5] && board_snapshot[5] == @mark)
       1
     else
       -1
