@@ -18,4 +18,8 @@ class ComputerPlayer < Player
     end
     current
   end
+
+  def evaluate(_board_snapshot)
+    1
+  end
 end
