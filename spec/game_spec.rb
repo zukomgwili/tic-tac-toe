@@ -1,3 +1,9 @@
+require './lib/player'
+require './lib/computer_player'
+require './lib/human_player'
+require './lib/presenter'
+require './lib/board'
+require './lib/factory'
 require 'game'
 
 describe Game do
@@ -6,15 +12,17 @@ describe Game do
   game = nil
   io = nil
   factory = nil
+  computer_player = nil
 
   before do
     presenter = Presenter.new
     board = Board.new
     factory = Factory.new
     io = InputOutput.new
+    computer_player = ComputerPlayer.new('O', 'X')
 
     allow(factory).to receive(:create_human_player).and_return(HumanPlayer.new('X', io), HumanPlayer.new('O', io))
-    allow(factory).to receive(:create_computer_player).and_return(ComputerPlayer.new('O', 'X'))
+    allow(factory).to receive(:create_computer_player).and_return(computer_player)
 
     allow(presenter).to receive(:display_rules)
     allow(presenter).to receive(:display_board)
@@ -65,6 +73,8 @@ describe Game do
     describe 'human vs computer game' do
       example 'a human takes the first turn' do
         allow(io).to receive(:in).and_return(1, 3, 5, 7, 9)
+        allow(computer_player).to receive(:find_best_move).and_return(2, 4, 6)
+
         allow(presenter).to receive(:prompt).and_return(2)
 
         game.start
@@ -74,6 +84,7 @@ describe Game do
       end
       example 'a computer takes first turn' do
         allow(io).to receive(:in).and_return(4, 5)
+        allow(computer_player).to receive(:find_best_move).and_return(1, 2, 3)
         allow(presenter).to receive(:prompt).and_return(4)
 
         game.start
@@ -84,8 +95,13 @@ describe Game do
     end
 
     example 'a computer vs computer game' do
-      allow(factory).to receive(:create_computer_player).and_return(ComputerPlayer.new('X', 'O'),
-                                                                    ComputerPlayer.new('O', 'X'))
+      first_player = ComputerPlayer.new('X', 'O')
+      second_player = ComputerPlayer.new('O', 'X')
+
+      allow(factory).to receive(:create_computer_player).and_return(first_player, second_player)
+      allow(first_player).to receive(:find_best_move).and_return(1, 3, 5, 7)
+      allow(second_player).to receive(:find_best_move).and_return(2, 4, 6)
+
       allow(presenter).to receive(:prompt).and_return(3)
 
       game.start
