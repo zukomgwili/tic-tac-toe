@@ -1,4 +1,6 @@
-#Requirements
+# Tic-Tac-Toe
+
+## Requirements
 
 - Install Ruby 3 or later
 - Install RSpec 3 or later
