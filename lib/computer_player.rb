@@ -42,7 +42,6 @@ class ComputerPlayer < Player
 
     return 0 if board_snapshot.all? { |square| square.strip.length.zero? == false }
 
-    puts board_snapshot.inspect
     empty_square_index = board_snapshot.index { |square| square.strip.length.zero? }
     best_value = is_maximizer ? -1000 : 1000
     if is_maximizer
