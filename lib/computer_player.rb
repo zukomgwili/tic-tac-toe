@@ -9,11 +9,11 @@ class ComputerPlayer < Player
 
   def pick(board)
     previous = board.board.clone
-    square_number = @square_numbers.shift
+    square_number = find_best_move(previous)
     current = board.put(@mark, square_number)
     successful_pick = current != previous
     until successful_pick || @square_numbers.empty?
-      square_number = @square_numbers.shift
+      square_number = find_best_move(previous)
       current = board.put(@mark, square_number)
       successful_pick = current != previous
     end
