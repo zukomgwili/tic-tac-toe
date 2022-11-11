@@ -41,147 +41,147 @@ describe ComputerPlayer do
 
   describe 'evaluate' do
     describe 'when the player has a winning top row' do
-      it 'should return the value 1' do
+      it 'should return the value 10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['X', 'X', 'X', 'O', 'O', '', '', '', ''])
 
-        expect(result).to eq(1)
+        expect(result).to eq(10)
       end
     end
     describe 'when the opponent has a winning top row' do
-      it 'should return the value -1' do
+      it 'should return the value -10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['O', 'O', 'O', 'X', 'X', '', 'X', '', ''])
 
-        expect(result).to eq(-1)
+        expect(result).to eq(-10)
       end
     end
     describe 'when the player has a winning middle row' do
-      it 'should return the value 1' do
+      it 'should return the value 10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['O', 'O', '', 'X', 'X', 'X', '', '', ''])
 
-        expect(result).to eq(1)
+        expect(result).to eq(10)
       end
     end
     describe 'when the opponent has a winning middle row' do
-      it 'should return the value -1' do
+      it 'should return the value -10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['', 'X', 'X', 'O', 'O', 'O', 'X', '', ''])
 
-        expect(result).to eq(-1)
+        expect(result).to eq(-10)
       end
     end
     describe 'when the player has a winning bottom row' do
-      it 'should return the value 1' do
+      it 'should return the value 10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['', '', '', '', 'O', 'O', 'X', 'X', 'X'])
 
-        expect(result).to eq(1)
+        expect(result).to eq(10)
       end
     end
     describe 'when the opponent has a winning bottom row' do
-      it 'should return the value -1' do
+      it 'should return the value -10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['', 'X', 'X', 'X', '', '', 'O', 'O', 'O'])
 
-        expect(result).to eq(-1)
+        expect(result).to eq(-10)
       end
     end
     describe 'when the player has a winning left column' do
-      it 'should return the value 1' do
+      it 'should return the value 10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['X', 'O', 'O', 'X', '', '', 'X', '', ''])
 
-        expect(result).to eq(1)
+        expect(result).to eq(10)
       end
     end
     describe 'when the opponent has a winning left column' do
-      it 'should return the value -1' do
+      it 'should return the value -10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['', 'X', 'X', 'X', '', '', 'O', 'O', 'O'])
 
-        expect(result).to eq(-1)
+        expect(result).to eq(-10)
       end
     end
     describe 'when the player has a winning middle column' do
-      it 'should return the value 1' do
+      it 'should return the value 10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['O', 'X', 'O', 'O', 'X', '', '', 'X', ''])
 
-        expect(result).to eq(1)
+        expect(result).to eq(10)
       end
     end
     describe 'when the opponent has a winning middle column' do
-      it 'should return the value -1' do
+      it 'should return the value -10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['X', 'O', 'X', 'X', 'O', '', '', 'O', ''])
 
-        expect(result).to eq(-1)
+        expect(result).to eq(-10)
       end
     end
     describe 'when the player has a winning right column' do
-      it 'should return the value 1' do
+      it 'should return the value 10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['O', '', 'X', 'O', '', 'X', '', '', 'X'])
 
-        expect(result).to eq(1)
+        expect(result).to eq(10)
       end
     end
     describe 'when the opponent has a winning right column' do
-      it 'should return the value -1' do
+      it 'should return the value -10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['X', 'X', 'O', 'X', '', 'O', '', '', 'O'])
 
-        expect(result).to eq(-1)
+        expect(result).to eq(-10)
       end
     end
     describe 'when the player has a winning negative gradient diagonal' do
-      it 'should return the value 1' do
+      it 'should return the value 10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['X', '', 'O', 'O', 'X', 'O', '', '', 'X'])
 
-        expect(result).to eq(1)
+        expect(result).to eq(10)
       end
     end
     describe 'when the opponent has a winning negative gradient diagonal' do
-      it 'should return the value -1' do
+      it 'should return the value -10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['O', 'X', '', 'X', 'O', 'X', '', '', 'O'])
 
-        expect(result).to eq(-1)
+        expect(result).to eq(-10)
       end
     end
     describe 'when the player has a winning positive gradient diagonal' do
-      it 'should return the value 1' do
+      it 'should return the value 10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['O', 'O', 'X', '', 'X', '', 'X', '', ''])
 
-        expect(result).to eq(1)
+        expect(result).to eq(10)
       end
     end
     describe 'when the opponent has a winning positive gradient diagonal' do
-      it 'should return the value -1' do
+      it 'should return the value -10' do
         player = ComputerPlayer.new('X', 'O')
 
         result = player.evaluate(['X', 'X', 'O', 'X', 'O', '', 'O', '', ''])
 
-        expect(result).to eq(-1)
+        expect(result).to eq(-10)
       end
     end
     describe 'when neither player have won' do
@@ -206,28 +206,28 @@ describe ComputerPlayer do
 
   describe 'calc_move' do
     describe 'given a board with opponent winner' do
-      it 'should return the value -1' do
+      it 'should return the value -10' do
         player = ComputerPlayer.new('X', 'O')
 
-        result = player.calc_move(['O', 'O', 'O', 'X', 'X', '', 'X', '', ''], true)
+        result = player.calc_move(['O', 'O', 'O', 'X', 'X', '', 'X', '', ''], true, 0)
 
-        expect(result).to eq(-1)
+        expect(result).to eq(-10)
       end
     end
     describe 'given a board with player winner' do
-      it 'should return the value 1' do
+      it 'should return the value 10' do
         player = ComputerPlayer.new('X', 'O')
 
-        result = player.calc_move(['X', 'X', 'X', 'O', 'O', '', '', '', ''], true)
+        result = player.calc_move(['X', 'X', 'X', 'O', 'O', '', '', '', ''], true, 0)
 
-        expect(result).to eq(1)
+        expect(result).to eq(10)
       end
     end
     describe 'when the board evaluates to a draw' do
       it 'should return the value 0' do
         player = ComputerPlayer.new('X', 'O')
 
-        result = player.calc_move(%w[X O X X O X O X O], true)
+        result = player.calc_move(%w[X O X X O X O X O], true, 0)
 
         expect(result).to eq(0)
       end
@@ -236,18 +236,18 @@ describe ComputerPlayer do
       it 'should return the best value' do
         player = ComputerPlayer.new('X', 'O')
 
-        result = player.calc_move(['', '', '', '', '', '', '', '', ''], true)
+        result = player.calc_move(['', '', '', '', '', '', '', '', ''], true, 0)
 
-        expect(result).to eq(0)
+        expect(result).to eq(3)
       end
     end
     describe 'given a board with a two squares filled' do
       it 'should return the best score' do
         player = ComputerPlayer.new('X', 'O')
 
-        result = player.calc_move(['X', 'O', '', '', '', '', '', '', ''], true)
+        result = player.calc_move(['X', 'O', '', '', '', '', '', '', ''], true, 0)
 
-        expect(result).to eq(1)
+        expect(result).to eq(5)
       end
     end
   end
@@ -259,7 +259,7 @@ describe ComputerPlayer do
 
         result = player.find_best_move(['', '', '', '', '', '', '', '', ''])
 
-        expect(result).to eq(9)
+        expect(result).to eq(1)
       end
     end
   end
