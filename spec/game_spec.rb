@@ -7,20 +7,14 @@ require './lib/factory'
 require 'game'
 
 describe Game do
-  presenter = nil
-  board = nil
-  game = nil
-  io = nil
-  factory = nil
-  computer_player = nil
+  let(:presenter) { Presenter.new }
+  let(:board) { Board.new }
+  let(:io) { InputOutput.new }
+  let(:factory) { Factory.new }
+  let(:computer_player) { ComputerPlayer.new('O', 'X') }
+  let(:game) { Game.new(presenter, board, factory) }
 
-  before do
-    presenter = Presenter.new
-    board = Board.new
-    factory = Factory.new
-    io = InputOutput.new
-    computer_player = ComputerPlayer.new('O', 'X')
-
+  before(:example) do
     allow(factory).to receive(:create_human_player).and_return(HumanPlayer.new('X', io), HumanPlayer.new('O', io))
     allow(factory).to receive(:create_computer_player).and_return(computer_player)
 
@@ -29,8 +23,6 @@ describe Game do
     allow(presenter).to receive(:update_board)
     allow(presenter).to receive(:alert)
     allow(presenter).to receive(:game_options)
-
-    game = Game.new(presenter, board, factory)
   end
 
   describe 'start' do
